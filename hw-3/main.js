@@ -1,8 +1,4 @@
 'use strict'
 let firstNumber = +prompt ('Введіть перше число');
 let secondNumber = +prompt ('Введіть друге число');
-let addition = firstNumber + secondNumber;
-let subtraction = firstNumber - secondNumber;
-let multiplication = firstNumber * secondNumber;
-let division = firstNumber / secondNumber;
-alert(`Результат: додавання ${addition}, віднімання ${subtraction}, множення ${multiplication}, ділення ${division}`)
+alert(`Користувач ввів ${firstNumber} і ${secondNumber}:\n${firstNumber} + ${secondNumber} = ${firstNumber + secondNumber};\n${firstNumber} - ${secondNumber} = ${firstNumber - secondNumber};\n${firstNumber} * ${secondNumber} = ${firstNumber * secondNumber};\n${firstNumber} / ${secondNumber} = ${firstNumber / secondNumber};`);
