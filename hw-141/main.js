@@ -42,10 +42,10 @@ const shoppingCart = {
     },
     };
   
-shoppingCart.addItem({name: 'Mobile phone', count: 2, price: 400});  
-shoppingCart.addItem({name: 'Electric kettle', count: 3, price: 300});  
-shoppingCart.addItem({name: 'Dishwasher', count: 4, price: 200});  
-console.log(shoppingCart.items);
-shoppingCart.deleteItem();
-console.log(shoppingCart.items);
-console.log(shoppingCart.getTotalSum());
+  shoppingCart.addItem({name: 'Mobile phone', count: 2, price: 400});  
+  shoppingCart.addItem({name: 'Electric kettle', count: 3, price: 300});  
+  shoppingCart.addItem({name: 'Dishwasher', count: 4, price: 200});  
+  console.log(shoppingCart.items);
+  shoppingCart.deleteItem();
+  console.log(shoppingCart.items);
+  console.log(shoppingCart.getTotalSum());
