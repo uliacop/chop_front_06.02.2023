@@ -11,16 +11,11 @@ const shoppingCart = {
           console.log(this.items);
           for (const item of this.items) {
               if (item.name === product.name) {
-                  item.quantity += 1;
+                  item.count += 1;
                   return;
               }
           }
-          const newProduct = {
-              ...product,
-              quantity: 1,
-          };
-  
-          this.items.push(newProduct);
+           this.items.push(product);
       },
       deleteItem(productName) {
           const { items} = this;
@@ -39,13 +34,20 @@ const shoppingCart = {
             total += price * count;
         }
           return total;
+
     },
     };
   
-  shoppingCart.addItem({name: 'Mobile phone', count: 2, price: 400});  
-  shoppingCart.addItem({name: 'Electric kettle', count: 3, price: 300});  
-  shoppingCart.addItem({name: 'Dishwasher', count: 4, price: 200});  
+  shoppingCart.addItem({name: 'Mobile phone', count: 1, price: 400});  
+  shoppingCart.addItem({name: 'Electric kettle', count: 1, price: 300});  
+  shoppingCart.addItem({name: 'Electric kettle', count: 1, price: 300});  
+  shoppingCart.addItem({name: 'Electric kettle', count: 1, price: 300});  
+  shoppingCart.addItem({name: 'Electric kettle', count: 1, price: 300});  
+  shoppingCart.addItem({name: 'Dishwasher', count: 1, price: 200});  
+  shoppingCart.addItem({name: 'Dishwasher', count: 1, price: 200});  
   console.log(shoppingCart.items);
-  shoppingCart.deleteItem();
+  shoppingCart.deleteItem('Mobile phone');
   console.log(shoppingCart.items);
   console.log(shoppingCart.getTotalSum());
+
+
