@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="cover">
+      <div class="form">
+        <form action="#" id="form" class="form_body">
+          <h1 class="form_title">Сторінка замовлення</h1>
+          <div class="form_item">
+            <label for="formName" class="form_label">ПІБ*</label>
+            <input id="formName"  name="name" class="form_input" data-reg="^[А-ЩЬЮЯҐЄІЇа-щьюяґєії']{2,}(?:-[А-ЩЬЮЯҐЄІЇа-щьюяґєії']{2,})?\s+[А-ЩЬЮЯҐЄІЇа-щьюяґєії']{2,}\s+[А-ЩЬЮЯҐЄІЇа-щьюяґєії']{2,}(?:-[А-ЩЬЮЯҐЄІЇа-щьюяґєії']{2,})?$" required/>
+            <span id="formNameError" class="error-message"></span>
+          </div>
+          <div class="form_item">
+            <label for="formEmail" class="form_label">E-mail*</label>
+            <input id="formEmail" placeholder="Введіть email" name="email" class="form_input_email" required/>
+            <span id="formEmailError" class="error-message"></span>
+          </div>
+          <div class="form_item">
+            <label for="formPhone" class="form_label">Мобільний телефон*</label>
+            <input id="formPhone" placeholder="+380xxxxxxxxx або 0xxxxxxxxx"  name="phone" class="form_input_phone" required/>
+            <span id="formPhoneError" class="error-message"></span>
+          </div>
+          <div class="form_item">
+            <div class="form_label">Виберіть зручний спосіб розрахунку</div>
+            <div class="options">
+              <div class="options_item">
+                <input id="formCashPayment" type="radio" checked value="cash" name="payment"class="options_input"/>
+                <label for="formCashPayment" class="options_label">Готівковий розрахунок</label>
+                <input id="formBankPayment" type="radio" value="bank" name="payment" class="options_input"/>
+                <label for="formBankPayment" class="options_label">Безготівковий розрахунок</label>
+              </div>
+            </div>
+          </div>
+          <div class="form_item">
+            <label for="formMessage" class="form_label" >Коментар до замовлення:</label>
+            <textarea name="message" id="formMessage" class="form_input" placeholder="Напишіть коментар для уточнення деталей замовлення"></textarea>
+          </div>
+          <div class="form_item">
+            <div class="form_label">Місто:</div>
+            <select name="city" class="select">
+              <option value="1" selected="selected">Миколаїв</option>
+              <option value="2">Одеса</option>
+              <option value="3">Київ</option>
+              <option value="4">Львів</option>
+              <option value="2">Кропивницький</option>
+              <option value="3">Інше місто (уточнити в коментарях)</option>
+            </select>
+          </div>
+          <div class="form_item">
+            <div class="form_label">Виберіть віділення Нової пошти:</div>
+            <select name="branch" class="select">
+              <option value="1" selected="selected">№ 1</option>
+              <option value="2">№ 2</option>
+              <option value="3">№ 3</option>
+              <option value="4">№ 4</option>
+              <option value="5">№ 5</option>
+              <option value="6">№ 6</option>
+              <option value="7">Інше віділення(уточнити в коментарях)</option>
+            </select>
+          </div>
+          <div class="form_item">
+            <div class="form_label">Кількість продукції, що купується:</div>
+            <input type="range" id="r1" oninput="fun1()" value="1" />
+            <input type="text" id="i1" value="1" />
+          </div>
+          <button class="form_button" type="submit">
+            Підтвердити замовлення
+          </button>
+        </form>
+      </div>
+      <div class="info" id="output"></div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
