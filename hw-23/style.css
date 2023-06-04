@@ -1,0 +1,16 @@
+  .weather, .image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.wrapper {
+    background-color: rgb(207, 229, 229);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.q {
+    text-align: center;
+}
+ 
