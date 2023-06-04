@@ -3,14 +3,10 @@
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 50px;
+   background-color: #e3b4dc;
 }
 .ul {
   list-style: none;
-}
-.product,
-.list,
-.price-info {
-  background-color: #e3b4dc;
 }
 .btn,
 button {

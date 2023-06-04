@@ -25,22 +25,58 @@ const data = {
   meat: [
     { name: "bacon", count: 21, quality: "excellent" },
     { name: "beef", count: 12, quality: "excellent" },
-    { name: "chiken", count: 7, quality: "excellent" },
+    { name: "chicken", count: 7, quality: "excellent" },
   ],
   bread: [
     { name: "baguette", count: 23, quality: "excellent" },
     { name: "sponge cake", count: 20, quality: "excellent" },
     { name: "quiche", count: 41, quality: "excellent" },
-    { name: "pitta breade", count: 7, quality: "excellent" },
+    { name: "pitta bread", count: 7, quality: "excellent" },
   ],
   fish: [
     { name: "anchovy", count: 23, quality: "excellent" },
     { name: "cod", count: 20, quality: "excellent" },
-    { name: "pilcharde", count: 41, quality: "excellent" },
+    { name: "pilchard", count: 41, quality: "excellent" },
     { name: "plaice", count: 7, quality: "excellent" },
   ],
 };
 const buttons = document.querySelectorAll(".btn");
+const myOrdersButton = document.createElement("button");
+myOrdersButton.textContent = "Мої замовлення";
+priceInfo.appendChild(myOrdersButton);
+let myOrdersClicked = false; 
+function handleDeleteButtonClick(event) {
+  const productCard = event.target.closest(".product-card");
+  if (productCard) {
+    productCard.remove();
+  }
+}
+function saveMyOrders() {
+  localStorage.setItem("myOrdersContent", priceInfo.innerHTML);
+}
+function restoreMyOrders() {
+  const storedOrdersContent = localStorage.getItem("myOrdersContent");
+  if (storedOrdersContent) {
+    priceInfo.innerHTML = storedOrdersContent;
+    myOrdersClicked = true;
+  }
+}
+function handleMyOrdersButtonClick() {
+  if (!myOrdersClicked) {
+    product.style.display = "none";
+    list.innerHTML = "";
+    myOrdersClicked = true;
+  } else {
+    product.style.display = "block";
+    myOrdersClicked = false;
+  }
+}
+myOrdersButton.addEventListener("click", handleMyOrdersButtonClick);
+function saveMyOrders() {
+  localStorage.setItem("myOrdersContent", priceInfo.innerHTML);
+}
+window.addEventListener("beforeunload", saveMyOrders);
+window.addEventListener("DOMContentLoaded", restoreMyOrders);
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     const productId = button.dataset.dataId;
@@ -72,16 +108,33 @@ buttons.forEach((button) => {
         }</p>
         <p>quality: ${
           productList.find((product) => product.name === name).quality
-        }</p>
-      `;
+        }</p>`;
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "Видалити";
+      deleteButton.addEventListener("click", handleDeleteButtonClick);
+      card.appendChild(deleteButton);
       card.appendChild(buyButton);
       li.addEventListener("click", () => {
-        priceInfo.textContent = "";
+        const existingCard = priceInfo.querySelector(".product-card");
+        if (existingCard) {
+          existingCard.remove();
+        }
         priceInfo.appendChild(card);
       });
     });
   });
 });
+function handleMyOrdersButtonClick() {
+  if (!myOrdersClicked) {
+    product.style.display = "none";
+    list.innerHTML = "";
+    myOrdersClicked = true;
+  } else {
+    product.style.display = "block";
+    myOrdersClicked = false;
+  }
+}
+myOrdersButton.addEventListener("click", handleMyOrdersButtonClick);
 function updateValue(value) {
   document.getElementById("i1").value = value;
 }
@@ -100,7 +153,6 @@ function isValidEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
-
 function showError(input, message) {
   const formControl = input.parentElement;
   const errorMessage = formControl.querySelector(".error-message");
@@ -162,6 +214,7 @@ form.addEventListener("submit", function (e) {
   const paymentMethod = cashInput.checked
     ? "Готівковий розрахунок"
     : "Безготівковий розрахунок";
+
   const output = document.getElementById("output");
   output.innerHTML = `
     <p><strong>Інформація по замовленню:</strong></p>
